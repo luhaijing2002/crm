@@ -110,14 +110,19 @@ layui.use(['table', 'treetable'], function () {
                     if(result.code == 200){
                         //关闭加载层的
                         setTimeout(function () {
+                            top.layer.msg("删除成功！",{icon:6});
                             top.layer.close(index);
                             //提示成功
-                            top.layer.msg("删除成功！",{icon:6});
                             layer.closeAll("iframe");
                             // //刷新父页面
                             // parent.location.reload();
                             //刷新当前页面
-                            location.reload();
+                            parent.location.reload();
+                            // top.layer.msg("操作成功");
+                            // top.layer.close(index);
+                            // layer.closeAll("iframe");
+                            // // 刷新父页面
+                            // parent.location.reload();
                         }, 500);
                     }else{
                         //提示失败

@@ -51,26 +51,28 @@ layui.use(['table','layer',"form"],function(){
                 curr:1
             },
             where:{
-                cusName:$("input[name='name']").val(),// 客户名
-                cusNo:$("input[name='khno']").val(),// 客户编号
+                customerName:$("[name='name']").val(),// 客户名  customerName   name
+                customerNo:$("[name='khno']").val(),// 客户编号
                 level:$("#level").val()    //客户级别
             }
         })
     });
 
 
-    // 头工具栏事件
+
+    // 头部工具栏事件
     table.on('toolbar(customers)',function (obj) {
         switch (obj.event) {
-            case "add":
+            case "add"://添加
                 openAddOrUpdateCustomerDialog();
                 break;
-            case "order":
+            case "order"://订单查看
                 openOrderInfoDialog(table.checkStatus(obj.config.id).data);
                 break;
         }
     });
 
+    //行工具栏绑定
     table.on('tool(customers)',function (obj) {
         var layEvent =obj.event;
         if(layEvent === "edit"){
@@ -90,6 +92,11 @@ layui.use(['table','layer',"form"],function(){
     });
 
 
+    /***
+     * 打开客户添加或更新的对话框
+     * @param id
+     */
+
     function openAddOrUpdateCustomerDialog(id) {
         var title="客户管理-客户添加";
         var url=ctx+"/customer/addOrUpdateCustomerPage";
@@ -106,6 +113,10 @@ layui.use(['table','layer',"form"],function(){
         })
     }
 
+    /**
+     * 打开指定客户的订单对话框
+     * @param data
+     */
     function openOrderInfoDialog(data) {
         if(data.length==0){
             layer.msg("请选择查看订单对应客户!");

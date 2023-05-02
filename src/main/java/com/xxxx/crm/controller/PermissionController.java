@@ -15,4 +15,5 @@ public class PermissionController extends BaseController {
 
     @Resource
     private PermissionService permissionService;
+
 }

@@ -298,6 +298,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.xxxx.crm.vo.Customer" >
     update t_customer
     set khno = #{khno,jdbcType=VARCHAR},
@@ -335,7 +336,7 @@
     <where>
       is_valid = 1 and state = 0
       <if test="customerName != null and customerName != ''">
-        and customer_name  like concat('%',#{customerName},'%')
+        and name  like concat('%',#{customerName},'%')
       </if>
       <if test="customerNo != null and customerNo != ''">
         and khno = #{customerNo}
@@ -345,10 +346,17 @@
       </if>
     </where>
 
+  </select>
 
-
-
-
+  <!--通过客户名称查询客户记录-->
+  <select id="queryCustomerByCustomerName" parameterType="string" resultType="com.xxxx.crm.vo.Customer">
+    select
+        <include refid="Base_Column_List"/>
+    from
+        t_customer
+    where
+        is_valid = 1 and state = 0
+    and name = #{customerName}
   </select>
 
 

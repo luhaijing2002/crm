@@ -6,11 +6,11 @@ import java.util.Date;
 //客户表
 
 public class Customer {
-    private Integer id;
+    private Integer id;//客户id  *
 
     private String khno;//客户编号
 
-    private String name;
+    private String name;//客户名称  *
 
     private String area;
 
@@ -26,7 +26,7 @@ public class Customer {
 
     private String postCode;
 
-    private String phone;
+    private String phone;//手机号码 *
 
     private String fax;
 
@@ -34,7 +34,7 @@ public class Customer {
 
     private String yyzzzch;
 
-    private String fr;
+    private String fr;//法人代表 *
 
     private String zczj;
 
@@ -48,9 +48,9 @@ public class Customer {
 
     private String gsdjh;
 
-    private Integer state;//客户的流失 0 表示正常
+    private Integer state;//客户的流失 0 表示正常 *
 
-    private Integer isValid;
+    private Integer isValid;//记录的存在状态 *
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createDate;
